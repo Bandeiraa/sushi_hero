@@ -1,0 +1,400 @@
+[gd_scene load_steps=16 format=3 uid="uid://dq72d47la5q6w"]
+
+[ext_resource type="Script" path="res://interface/scripts/debugger/fps.gd" id="1_mtg84"]
+[ext_resource type="Script" path="res://interface/scripts/debugger_interface.gd" id="1_p7ryv"]
+[ext_resource type="Script" path="res://interface/scripts/gold.gd" id="2_16nhy"]
+[ext_resource type="Script" path="res://interface/scripts/debugger/settings.gd" id="2_donjc"]
+[ext_resource type="PackedScene" uid="uid://fxlyxu27d4fr" path="res://interface/scenes/interactable_container/recipes_container.tscn" id="4_newls"]
+[ext_resource type="PackedScene" uid="uid://c5nwoix1n3x4p" path="res://interface/scenes/interactable_container/fridge_container.tscn" id="5_4j025"]
+[ext_resource type="PackedScene" uid="uid://d2xyg2ukayjf7" path="res://interface/scenes/interactable_container/oven_container.tscn" id="6_2hpc3"]
+[ext_resource type="PackedScene" uid="uid://5tqsjnsfsh8w" path="res://interface/scenes/interactable_container/cutting_container.tscn" id="7_tth8x"]
+[ext_resource type="PackedScene" uid="uid://2pouf5xgj7mt" path="res://interface/scenes/interactable_container/truck_container.tscn" id="9_vi1va"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_qmhob"]
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_cw6wb"]
+font_size = 24
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_657yb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ugnun"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p2crc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_80j3s"]
+
+[node name="DebuggerInterface" type="CanvasLayer" node_paths=PackedStringArray("_reputation_label")]
+process_mode = 3
+script = ExtResource("1_p7ryv")
+_reputation_label = NodePath("Reputation")
+
+[node name="Mask_1" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(0, 40)
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 40.0
+grow_horizontal = 2
+color = Color(0, 0, 0, 0.6)
+
+[node name="Mask_2" type="ColorRect" parent="."]
+visible = false
+custom_minimum_size = Vector2(0, 40)
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0, 0, 0, 0.6)
+
+[node name="Fps" type="Label" parent="Mask_2"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -112.0
+offset_top = -39.0
+offset_right = -10.0
+offset_bottom = -2.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "9999 Fps"
+label_settings = SubResource("LabelSettings_qmhob")
+horizontal_alignment = 2
+vertical_alignment = 1
+script = ExtResource("1_mtg84")
+
+[node name="Gold" type="Label" parent="." groups=["gold_label"]]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -72.0
+offset_top = 2.0
+offset_right = -10.0
+offset_bottom = 39.0
+grow_horizontal = 0
+text = "$ 999"
+label_settings = SubResource("LabelSettings_cw6wb")
+horizontal_alignment = 2
+vertical_alignment = 1
+script = ExtResource("2_16nhy")
+
+[node name="Reputation" type="Label" parent="."]
+offset_left = 10.0
+offset_top = 2.0
+offset_right = 179.0
+offset_bottom = 39.0
+text = "Reputation: 50"
+label_settings = SubResource("LabelSettings_cw6wb")
+vertical_alignment = 1
+
+[node name="SettingsBackground" type="ColorRect" parent="." node_paths=PackedStringArray("_fps")]
+visible = false
+custom_minimum_size = Vector2(480, 640)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -240.0
+offset_right = 160.0
+offset_bottom = 240.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.2, 0.2, 0.4, 0.8)
+script = ExtResource("2_donjc")
+_fps = NodePath("../Mask_2")
+
+[node name="Container" type="VBoxContainer" parent="SettingsBackground"]
+custom_minimum_size = Vector2(440, 600)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -220.0
+offset_top = -300.0
+offset_right = 220.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 8
+
+[node name="Settings" type="Label" parent="SettingsBackground/Container"]
+layout_mode = 2
+text = "GAME SETTINGS"
+horizontal_alignment = 1
+
+[node name="GraphicsDelimiter" type="HBoxContainer" parent="SettingsBackground/Container"]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="Text" type="Label" parent="SettingsBackground/Container/GraphicsDelimiter"]
+layout_mode = 2
+text = "Graphics"
+horizontal_alignment = 1
+
+[node name="Right" type="VBoxContainer" parent="SettingsBackground/Container/GraphicsDelimiter"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="RightDelimiter" type="ColorRect" parent="SettingsBackground/Container/GraphicsDelimiter/Right"]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+
+[node name="GraphicsContainer" type="VBoxContainer" parent="SettingsBackground/Container"]
+custom_minimum_size = Vector2(440, 0)
+layout_mode = 2
+
+[node name="Screen_Space_AA" type="HBoxContainer" parent="SettingsBackground/Container/GraphicsContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Text" type="Label" parent="SettingsBackground/Container/GraphicsContainer/Screen_Space_AA"]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+text = "Screen space AA"
+vertical_alignment = 1
+
+[node name="Options" type="OptionButton" parent="SettingsBackground/Container/GraphicsContainer/Screen_Space_AA" groups=["options_button"]]
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_657yb")
+alignment = 1
+item_count = 2
+selected = 0
+popup/item_0/text = "Disabled (Fastest)"
+popup/item_0/id = 0
+popup/item_1/text = "FXAA (Fast)"
+popup/item_1/id = 1
+
+[node name="MSAA_3D" type="HBoxContainer" parent="SettingsBackground/Container/GraphicsContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Text" type="Label" parent="SettingsBackground/Container/GraphicsContainer/MSAA_3D"]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+text = "MSAA 3D"
+vertical_alignment = 1
+
+[node name="Options" type="OptionButton" parent="SettingsBackground/Container/GraphicsContainer/MSAA_3D" groups=["options_button"]]
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_657yb")
+alignment = 1
+item_count = 4
+selected = 0
+popup/item_0/text = "Disabled (Fastest)"
+popup/item_0/id = 0
+popup/item_1/text = "2x (Average)"
+popup/item_1/id = 1
+popup/item_2/text = "4x (Slow)"
+popup/item_2/id = 2
+popup/item_3/text = "8x (Slowest)"
+popup/item_3/id = 3
+
+[node name="USE_TAA" type="HBoxContainer" parent="SettingsBackground/Container/GraphicsContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Text" type="Label" parent="SettingsBackground/Container/GraphicsContainer/USE_TAA"]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+text = "TAA"
+vertical_alignment = 1
+
+[node name="HContainer" type="HBoxContainer" parent="SettingsBackground/Container/GraphicsContainer/USE_TAA"]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+
+[node name="Options" type="CheckBox" parent="SettingsBackground/Container/GraphicsContainer/USE_TAA/HContainer" groups=["options_button"]]
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_657yb")
+alignment = 1
+
+[node name="SSR_ENABLED" type="HBoxContainer" parent="SettingsBackground/Container/GraphicsContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Text" type="Label" parent="SettingsBackground/Container/GraphicsContainer/SSR_ENABLED"]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+text = "Reflections"
+vertical_alignment = 1
+
+[node name="HContainer" type="HBoxContainer" parent="SettingsBackground/Container/GraphicsContainer/SSR_ENABLED"]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+
+[node name="Options" type="CheckBox" parent="SettingsBackground/Container/GraphicsContainer/SSR_ENABLED/HContainer" groups=["options_button"]]
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_657yb")
+alignment = 1
+
+[node name="SSAO_ENABLED" type="HBoxContainer" parent="SettingsBackground/Container/GraphicsContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Text" type="Label" parent="SettingsBackground/Container/GraphicsContainer/SSAO_ENABLED"]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+text = "Ambient occlusion"
+vertical_alignment = 1
+
+[node name="HContainer" type="HBoxContainer" parent="SettingsBackground/Container/GraphicsContainer/SSAO_ENABLED"]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+
+[node name="Options" type="CheckBox" parent="SettingsBackground/Container/GraphicsContainer/SSAO_ENABLED/HContainer" groups=["options_button"]]
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_657yb")
+alignment = 1
+
+[node name="SSIL_ENABLED" type="HBoxContainer" parent="SettingsBackground/Container/GraphicsContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Text" type="Label" parent="SettingsBackground/Container/GraphicsContainer/SSIL_ENABLED"]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+text = "Indirect lighting"
+vertical_alignment = 1
+
+[node name="HContainer" type="HBoxContainer" parent="SettingsBackground/Container/GraphicsContainer/SSIL_ENABLED"]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+
+[node name="Options" type="CheckBox" parent="SettingsBackground/Container/GraphicsContainer/SSIL_ENABLED/HContainer" groups=["options_button"]]
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_657yb")
+alignment = 1
+
+[node name="SDFGI_ENABLED" type="HBoxContainer" parent="SettingsBackground/Container/GraphicsContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Text" type="Label" parent="SettingsBackground/Container/GraphicsContainer/SDFGI_ENABLED"]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+text = "Global illumination"
+vertical_alignment = 1
+
+[node name="HContainer" type="HBoxContainer" parent="SettingsBackground/Container/GraphicsContainer/SDFGI_ENABLED"]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+
+[node name="Options" type="CheckBox" parent="SettingsBackground/Container/GraphicsContainer/SDFGI_ENABLED/HContainer" groups=["options_button"]]
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_657yb")
+alignment = 1
+
+[node name="MiscDelimiter" type="HBoxContainer" parent="SettingsBackground/Container"]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="Left" type="VBoxContainer" parent="SettingsBackground/Container/MiscDelimiter"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="LeftDelimiter" type="ColorRect" parent="SettingsBackground/Container/MiscDelimiter/Left"]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+
+[node name="Text" type="Label" parent="SettingsBackground/Container/MiscDelimiter"]
+layout_mode = 2
+text = "Miscellaneous"
+horizontal_alignment = 1
+
+[node name="MiscellaneousContainer" type="VBoxContainer" parent="SettingsBackground/Container"]
+custom_minimum_size = Vector2(440, 0)
+layout_mode = 2
+
+[node name="Screen_Space_AA" type="HBoxContainer" parent="SettingsBackground/Container/MiscellaneousContainer"]
+visible = false
+layout_mode = 2
+alignment = 1
+
+[node name="Text" type="Label" parent="SettingsBackground/Container/MiscellaneousContainer/Screen_Space_AA"]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+text = "Screen Space AA"
+vertical_alignment = 1
+
+[node name="Options" type="OptionButton" parent="SettingsBackground/Container/MiscellaneousContainer/Screen_Space_AA" groups=["options_button"]]
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ugnun")
+alignment = 1
+item_count = 2
+selected = 0
+popup/item_0/text = "Disabled (Fastest)"
+popup/item_0/id = 0
+popup/item_1/text = "FXAA (Fast)"
+popup/item_1/id = 1
+
+[node name="MSAA_3D" type="HBoxContainer" parent="SettingsBackground/Container/MiscellaneousContainer"]
+visible = false
+layout_mode = 2
+alignment = 1
+
+[node name="Text" type="Label" parent="SettingsBackground/Container/MiscellaneousContainer/MSAA_3D"]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+text = "MSAA 3D"
+vertical_alignment = 1
+
+[node name="Options" type="OptionButton" parent="SettingsBackground/Container/MiscellaneousContainer/MSAA_3D" groups=["options_button"]]
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_p2crc")
+alignment = 1
+item_count = 4
+selected = 0
+popup/item_0/text = "Disabled (Fastest)"
+popup/item_0/id = 0
+popup/item_1/text = "2x (Average)"
+popup/item_1/id = 1
+popup/item_2/text = "4x (Slow)"
+popup/item_2/id = 2
+popup/item_3/text = "8x (Slowest)"
+popup/item_3/id = 3
+
+[node name="DISPLAY_FPS" type="HBoxContainer" parent="SettingsBackground/Container/MiscellaneousContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Text" type="Label" parent="SettingsBackground/Container/MiscellaneousContainer/DISPLAY_FPS"]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+text = "Display FPS"
+vertical_alignment = 1
+
+[node name="HContainer" type="HBoxContainer" parent="SettingsBackground/Container/MiscellaneousContainer/DISPLAY_FPS"]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+
+[node name="Options" type="CheckBox" parent="SettingsBackground/Container/MiscellaneousContainer/DISPLAY_FPS/HContainer" groups=["options_button"]]
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_80j3s")
+alignment = 1
+
+[node name="RecipesBackground" parent="." instance=ExtResource("4_newls")]
+visible = false
+
+[node name="FridgeContainer" parent="." instance=ExtResource("5_4j025")]
+_amount = 30
+
+[node name="OvenContainer" parent="." instance=ExtResource("6_2hpc3")]
+visible = false
+
+[node name="CuttingContainer" parent="." instance=ExtResource("7_tth8x")]
+visible = false
+
+[node name="TruckContainer" parent="." instance=ExtResource("9_vi1va")]
+visible = false

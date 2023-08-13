@@ -1,0 +1,100 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5nwoix1n3x4p"]
+
+[ext_resource type="Script" path="res://interface/scripts/interactable_container/fridge_container.gd" id="1_xxtam"]
+
+[node name="FridgeContainer" type="Control" node_paths=PackedStringArray("_interactable_container", "_character_container") groups=["fridge_container"]]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xxtam")
+_interactable_container = NodePath("HContainer/Fridge/VContainer/Container/VContainer")
+_character_container = NodePath("HContainer/Character/VContainer/Container/VContainer")
+
+[node name="HContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -580.0
+offset_top = -320.0
+offset_right = 580.0
+offset_bottom = 320.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 200
+
+[node name="Fridge" type="ColorRect" parent="HContainer"]
+custom_minimum_size = Vector2(480, 640)
+layout_mode = 2
+color = Color(0.2, 0.2, 0.4, 0.8)
+
+[node name="VContainer" type="VBoxContainer" parent="HContainer/Fridge"]
+custom_minimum_size = Vector2(440, 600)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -220.0
+offset_top = -300.0
+offset_right = 220.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Name" type="Label" parent="HContainer/Fridge/VContainer"]
+layout_mode = 2
+text = "FRIDGE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Container" type="ScrollContainer" parent="HContainer/Fridge/VContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VContainer" type="VBoxContainer" parent="HContainer/Fridge/VContainer/Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Character" type="ColorRect" parent="HContainer"]
+custom_minimum_size = Vector2(480, 640)
+layout_mode = 2
+color = Color(0.2, 0.2, 0.4, 0.8)
+
+[node name="VContainer" type="VBoxContainer" parent="HContainer/Character"]
+custom_minimum_size = Vector2(440, 600)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -220.0
+offset_top = -300.0
+offset_right = 220.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Name" type="Label" parent="HContainer/Character/VContainer"]
+layout_mode = 2
+text = "CHARACTER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Container" type="ScrollContainer" parent="HContainer/Character/VContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VContainer" type="VBoxContainer" parent="HContainer/Character/VContainer/Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3

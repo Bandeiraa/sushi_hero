@@ -1,0 +1,16 @@
+[gd_resource type="Environment" load_steps=3 format=3 uid="uid://ypolo0jydctv"]
+
+[ext_resource type="Material" uid="uid://btntdpqkc31xa" path="res://shaders/materials/sky_shader.tres" id="1_3ownc"]
+
+[sub_resource type="Sky" id="Sky_m8uvb"]
+sky_material = ExtResource("1_3ownc")
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_m8uvb")
+ssr_max_steps = 256
+ssao_radius = 2.0
+ssao_detail = 4.0
+glow_enabled = true
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0092

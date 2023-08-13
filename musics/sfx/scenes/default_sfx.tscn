@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cdi3hsrwktg1n"]
+
+[ext_resource type="Script" path="res://musics/sfx/scripts/default_sfx.gd" id="1_8d3ge"]
+
+[node name="DefaultSFX" type="AudioStreamPlayer3D"]
+script = ExtResource("1_8d3ge")
+
+[connection signal="finished" from="." to="." method="_on_sfx_finished"]

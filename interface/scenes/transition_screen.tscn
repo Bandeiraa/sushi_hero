@@ -1,0 +1,77 @@
+[gd_scene load_steps=6 format=3 uid="uid://bnq0homp60i70"]
+
+[ext_resource type="Script" path="res://interface/scripts/transition_screen.gd" id="1_8qp4s"]
+
+[sub_resource type="Animation" id="Animation_ikfcf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mask:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_i62c4"]
+resource_name = "hide"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mask:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_up8f7"]
+resource_name = "show"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mask:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hib7k"]
+_data = {
+"RESET": SubResource("Animation_ikfcf"),
+"hide": SubResource("Animation_i62c4"),
+"show": SubResource("Animation_up8f7")
+}
+
+[node name="TransitionScreen" type="CanvasLayer" node_paths=PackedStringArray("_animation")]
+layer = 2
+script = ExtResource("1_8qp4s")
+_animation = NodePath("Animation")
+
+[node name="Mask" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+autoplay = "hide"
+libraries = {
+"": SubResource("AnimationLibrary_hib7k")
+}
+
+[connection signal="animation_finished" from="Animation" to="." method="_on_animation_finished"]

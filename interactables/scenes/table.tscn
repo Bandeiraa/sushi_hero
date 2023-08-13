@@ -1,0 +1,82 @@
+[gd_scene load_steps=20 format=3 uid="uid://4td537c6nslf"]
+
+[ext_resource type="PackedScene" uid="uid://cxiet3cxcits5" path="res://furniture/environment/table.tscn" id="1_s5xhi"]
+[ext_resource type="Script" path="res://interactables/scripts/table.gd" id="1_s80k4"]
+[ext_resource type="PackedScene" uid="uid://coes3he2dm1n" path="res://furniture/environment/plate.tscn" id="3_832vf"]
+[ext_resource type="PackedScene" uid="uid://iua5g6nuavbu" path="res://foods/scenes/roll.tscn" id="4_r0ddq"]
+[ext_resource type="PackedScene" uid="uid://bacferjjkcd6u" path="res://foods/scenes/udon.tscn" id="5_wsh86"]
+[ext_resource type="PackedScene" uid="uid://cjt51wxm2mk8" path="res://foods/scenes/dango.tscn" id="6_hx6ve"]
+[ext_resource type="PackedScene" uid="uid://cyoancy1h1wke" path="res://foods/scenes/gyoza.tscn" id="7_caohx"]
+[ext_resource type="PackedScene" uid="uid://0s7b2ofd3rnw" path="res://foods/scenes/ramen.tscn" id="8_0gwfk"]
+[ext_resource type="PackedScene" uid="uid://cdkn8xa5vx2p2" path="res://foods/scenes/wasabi.tscn" id="9_ryiuh"]
+[ext_resource type="PackedScene" uid="uid://bbr154bho4rll" path="res://foods/scenes/onigiri.tscn" id="10_7dktu"]
+[ext_resource type="PackedScene" uid="uid://bnqe2vvgblm12" path="res://foods/scenes/chukaman.tscn" id="11_p2uad"]
+[ext_resource type="PackedScene" uid="uid://dd2wpqe3gv6yq" path="res://foods/scenes/ebi_nigiri.tscn" id="12_y0gvq"]
+[ext_resource type="PackedScene" uid="uid://b1aa26axwyr2d" path="res://foods/scenes/salmon_roll.tscn" id="13_k0joc"]
+[ext_resource type="PackedScene" uid="uid://bexb6e60m30ea" path="res://foods/scenes/salmon_nigiri.tscn" id="14_nxupx"]
+[ext_resource type="PackedScene" uid="uid://bjgqteyw2pbj0" path="res://foods/scenes/maguro_nigiri.tscn" id="15_u2gqa"]
+[ext_resource type="PackedScene" uid="uid://dwn83mm45dw8f" path="res://foods/scenes/tamago_nigiri.tscn" id="16_7dirx"]
+[ext_resource type="PackedScene" uid="uid://b4d61no23qir4" path="res://foods/scenes/octopus_nigiri.tscn" id="17_pc4y4"]
+[ext_resource type="PackedScene" uid="uid://boqbc7ky78gmh" path="res://foods/scenes/sea_urchin_roll.tscn" id="18_v8ghx"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ho3qr"]
+radius = 3.0
+
+[node name="Table" type="Area3D" node_paths=PackedStringArray("_stools") groups=["table"]]
+script = ExtResource("1_s80k4")
+_stools = NodePath("Stools")
+
+[node name="Table" parent="." instance=ExtResource("1_s5xhi")]
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_ho3qr")
+
+[node name="Stools" type="Node3D" parent="."]
+
+[node name="Plate" parent="." instance=ExtResource("3_832vf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
+
+[node name="Roll" parent="Plate" instance=ExtResource("4_r0ddq")]
+visible = false
+
+[node name="Udon" parent="Plate" instance=ExtResource("5_wsh86")]
+visible = false
+
+[node name="Food_Dango" parent="Plate" instance=ExtResource("6_hx6ve")]
+visible = false
+
+[node name="Gyoza" parent="Plate" instance=ExtResource("7_caohx")]
+visible = false
+
+[node name="Ramen" parent="Plate" instance=ExtResource("8_0gwfk")]
+visible = false
+
+[node name="Wasabi" parent="Plate" instance=ExtResource("9_ryiuh")]
+visible = false
+
+[node name="Onigiri" parent="Plate" instance=ExtResource("10_7dktu")]
+visible = false
+
+[node name="Chukaman" parent="Plate" instance=ExtResource("11_p2uad")]
+visible = false
+
+[node name="EbiNigiri" parent="Plate" instance=ExtResource("12_y0gvq")]
+visible = false
+
+[node name="SalmonRoll" parent="Plate" instance=ExtResource("13_k0joc")]
+visible = false
+
+[node name="SalmonNigiri" parent="Plate" instance=ExtResource("14_nxupx")]
+visible = false
+
+[node name="MaguroNigiri" parent="Plate" instance=ExtResource("15_u2gqa")]
+visible = false
+
+[node name="TamagoNigiri" parent="Plate" instance=ExtResource("16_7dirx")]
+visible = false
+
+[node name="OctopusNigiri" parent="Plate" instance=ExtResource("17_pc4y4")]
+visible = false
+
+[node name="SeaUrchinRoll" parent="Plate" instance=ExtResource("18_v8ghx")]
+visible = false

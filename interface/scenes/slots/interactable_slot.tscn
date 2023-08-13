@@ -1,0 +1,64 @@
+[gd_scene load_steps=9 format=3 uid="uid://bcaprkap6cfcb"]
+
+[ext_resource type="Script" path="res://interface/scripts/slots/interactable_slot.gd" id="1_dgsct"]
+[ext_resource type="Texture2D" uid="uid://cqflbrkdyfah3" path="res://foods_ingredients/assets/avocado.png" id="2_swcn8"]
+[ext_resource type="Shader" path="res://interface/shaders/horizontal_movement.gdshader" id="3_qk0uo"]
+[ext_resource type="Texture2D" uid="uid://bc33jnmofp5xs" path="res://interface/assets/click_button_normal/normal.png" id="4_sn1p6"]
+[ext_resource type="Texture2D" uid="uid://eoynddejhken" path="res://interface/assets/click_button_normal/pressed.png" id="5_01emi"]
+[ext_resource type="Texture2D" uid="uid://c0vekbd7m2g82" path="res://interface/assets/click_button_normal/hover.png" id="6_hsmf8"]
+[ext_resource type="Texture2D" uid="uid://mu6fsb634754" path="res://interface/assets/click_button_normal/disabled.png" id="7_bp18y"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nn4m0"]
+shader = ExtResource("3_qk0uo")
+
+[node name="InteractableSlot" type="HBoxContainer" node_paths=PackedStringArray("_item_name", "_item_amount", "_item_texture")]
+custom_minimum_size = Vector2(0, 79)
+alignment = 1
+script = ExtResource("1_dgsct")
+_item_name = NodePath("Container/Name")
+_item_amount = NodePath("Container/Amount")
+_item_texture = NodePath("TextureContainer/ItemTexture")
+
+[node name="TextureContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(91, 0)
+layout_mode = 2
+
+[node name="ItemTexture" type="TextureRect" parent="TextureContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("2_swcn8")
+expand_mode = 1
+
+[node name="Container" type="VBoxContainer" parent="."]
+layout_mode = 2
+alignment = 1
+
+[node name="Name" type="Label" parent="Container"]
+custom_minimum_size = Vector2(180, 34)
+layout_mode = 2
+text = "ITEM - Avocado"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Amount" type="Label" parent="Container"]
+custom_minimum_size = Vector2(140, 34)
+layout_mode = 2
+text = "AMOUNT - 999x"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+
+[node name="SendButton" type="TextureButton" parent="HContainer"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_nn4m0")
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("4_sn1p6")
+texture_pressed = ExtResource("5_01emi")
+texture_hover = ExtResource("6_hsmf8")
+texture_disabled = ExtResource("7_bp18y")
+
+[connection signal="pressed" from="HContainer/SendButton" to="." method="_on_send_button_pressed"]

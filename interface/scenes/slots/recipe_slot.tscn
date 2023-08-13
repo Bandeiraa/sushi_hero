@@ -1,0 +1,222 @@
+[gd_scene load_steps=3 format=3 uid="uid://ce3g42rcmp12w"]
+
+[ext_resource type="Texture2D" uid="uid://2m5bribhrlm5" path="res://foods/assets/chukaman.png" id="1_rwxil"]
+[ext_resource type="Texture2D" uid="uid://cqflbrkdyfah3" path="res://foods_ingredients/assets/avocado.png" id="2_xe4rd"]
+
+[node name="RecipeSlot" type="VBoxContainer"]
+custom_minimum_size = Vector2(840, 200)
+offset_right = 860.0
+offset_bottom = 200.0
+alignment = 1
+
+[node name="VContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(820, 180)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 0
+
+[node name="HContainer" type="HBoxContainer" parent="VContainer"]
+custom_minimum_size = Vector2(91, 0)
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="LeftContainer" type="HBoxContainer" parent="VContainer/HContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Container" type="VBoxContainer" parent="VContainer/HContainer/LeftContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="Mask" type="ColorRect" parent="VContainer/HContainer/LeftContainer/Container"]
+custom_minimum_size = Vector2(2, 41)
+layout_mode = 2
+
+[node name="VContainer" type="VBoxContainer" parent="VContainer/HContainer/LeftContainer"]
+custom_minimum_size = Vector2(4, 2)
+layout_mode = 2
+alignment = 1
+
+[node name="Mask" type="ColorRect" parent="VContainer/HContainer/LeftContainer/VContainer"]
+custom_minimum_size = Vector2(16, 2)
+layout_mode = 2
+
+[node name="Container" type="HBoxContainer" parent="VContainer/HContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="ItemTexture" type="TextureRect" parent="VContainer/HContainer/Container"]
+custom_minimum_size = Vector2(91, 79)
+layout_mode = 2
+texture = ExtResource("1_rwxil")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Text" type="Label" parent="VContainer/HContainer/Container"]
+layout_mode = 2
+text = "Chukaman"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RightContainer" type="HBoxContainer" parent="VContainer/HContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="MaskContainer" type="VBoxContainer" parent="VContainer/HContainer/RightContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Mask" type="ColorRect" parent="VContainer/HContainer/RightContainer/MaskContainer"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+
+[node name="VContainer" type="VBoxContainer" parent="VContainer/HContainer/RightContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="Mask" type="ColorRect" parent="VContainer/HContainer/RightContainer/VContainer"]
+custom_minimum_size = Vector2(2, 41)
+layout_mode = 2
+
+[node name="VContainer" type="VBoxContainer" parent="VContainer"]
+custom_minimum_size = Vector2(840, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HContainer" type="HBoxContainer" parent="VContainer/VContainer"]
+layout_mode = 2
+
+[node name="LeftMask" type="ColorRect" parent="VContainer/VContainer/HContainer"]
+custom_minimum_size = Vector2(2, 0)
+layout_mode = 2
+
+[node name="Container" type="HBoxContainer" parent="VContainer/VContainer/HContainer"]
+custom_minimum_size = Vector2(0, 91)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Ingredient_1" type="VBoxContainer" parent="VContainer/VContainer/HContainer/Container"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Ingredient" type="VBoxContainer" parent="VContainer/VContainer/HContainer/Container/Ingredient_1"]
+custom_minimum_size = Vector2(91, 79)
+layout_mode = 2
+alignment = 1
+
+[node name="HContainer" type="HBoxContainer" parent="VContainer/VContainer/HContainer/Container/Ingredient_1/Ingredient"]
+layout_mode = 2
+alignment = 1
+
+[node name="IngredientTexture" type="TextureRect" parent="VContainer/VContainer/HContainer/Container/Ingredient_1/Ingredient/HContainer"]
+custom_minimum_size = Vector2(91, 79)
+layout_mode = 2
+texture = ExtResource("2_xe4rd")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="VContainer" type="VBoxContainer" parent="VContainer/VContainer/HContainer/Container/Ingredient_1/Ingredient/HContainer"]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="Ingredient" type="Label" parent="VContainer/VContainer/HContainer/Container/Ingredient_1/Ingredient/HContainer/VContainer"]
+layout_mode = 2
+text = "Avocado"
+vertical_alignment = 1
+
+[node name="Amount" type="Label" parent="VContainer/VContainer/HContainer/Container/Ingredient_1/Ingredient/HContainer/VContainer"]
+layout_mode = 2
+text = "1x"
+vertical_alignment = 1
+
+[node name="Ingredient_2" type="VBoxContainer" parent="VContainer/VContainer/HContainer/Container"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Ingredient" type="VBoxContainer" parent="VContainer/VContainer/HContainer/Container/Ingredient_2"]
+custom_minimum_size = Vector2(91, 79)
+layout_mode = 2
+alignment = 1
+
+[node name="HContainer" type="HBoxContainer" parent="VContainer/VContainer/HContainer/Container/Ingredient_2/Ingredient"]
+layout_mode = 2
+alignment = 1
+
+[node name="IngredientTexture" type="TextureRect" parent="VContainer/VContainer/HContainer/Container/Ingredient_2/Ingredient/HContainer"]
+custom_minimum_size = Vector2(91, 79)
+layout_mode = 2
+texture = ExtResource("2_xe4rd")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="VContainer" type="VBoxContainer" parent="VContainer/VContainer/HContainer/Container/Ingredient_2/Ingredient/HContainer"]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="Ingredient" type="Label" parent="VContainer/VContainer/HContainer/Container/Ingredient_2/Ingredient/HContainer/VContainer"]
+layout_mode = 2
+text = "Avocado"
+vertical_alignment = 1
+
+[node name="Amount" type="Label" parent="VContainer/VContainer/HContainer/Container/Ingredient_2/Ingredient/HContainer/VContainer"]
+layout_mode = 2
+text = "1x"
+vertical_alignment = 1
+
+[node name="Ingredient_3" type="VBoxContainer" parent="VContainer/VContainer/HContainer/Container"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Ingredient" type="VBoxContainer" parent="VContainer/VContainer/HContainer/Container/Ingredient_3"]
+custom_minimum_size = Vector2(91, 79)
+layout_mode = 2
+alignment = 1
+
+[node name="HContainer" type="HBoxContainer" parent="VContainer/VContainer/HContainer/Container/Ingredient_3/Ingredient"]
+layout_mode = 2
+alignment = 1
+
+[node name="IngredientTexture" type="TextureRect" parent="VContainer/VContainer/HContainer/Container/Ingredient_3/Ingredient/HContainer"]
+custom_minimum_size = Vector2(91, 79)
+layout_mode = 2
+texture = ExtResource("2_xe4rd")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="VContainer" type="VBoxContainer" parent="VContainer/VContainer/HContainer/Container/Ingredient_3/Ingredient/HContainer"]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="Ingredient" type="Label" parent="VContainer/VContainer/HContainer/Container/Ingredient_3/Ingredient/HContainer/VContainer"]
+layout_mode = 2
+text = "Avocado"
+vertical_alignment = 1
+
+[node name="Amount" type="Label" parent="VContainer/VContainer/HContainer/Container/Ingredient_3/Ingredient/HContainer/VContainer"]
+layout_mode = 2
+text = "1x"
+vertical_alignment = 1
+
+[node name="RightMask" type="ColorRect" parent="VContainer/VContainer/HContainer"]
+custom_minimum_size = Vector2(2, 0)
+layout_mode = 2
+
+[node name="BottomMask" type="ColorRect" parent="VContainer"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
